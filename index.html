@@ -1,0 +1,196 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lakshya Study Bot Discord Bot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #41048C 0%, #000000 100%);
+        }
+        .glassmorphism {
+            background: rgb(255, 255, 255);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glassmorphism:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .follow-mouse {
+            background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(99,102,241,0.5), transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 gradient-bg">
+<header class="flex justify-between items-center p-6">
+    <div class="flex items-center">
+        <img alt="Logo" class="h-10 w-10" height="80" src="https://i.ibb.co/cSyvTcY3/image.png" width="80"/>
+    </div>
+    <nav class="flex-1 flex justify-center space-x-6">
+        <a class="text-white hover:text-gray-300" href="#">Home</a>
+        <a class="text-white hover:text-gray-300" href="#">Dashboard</a>
+        <a class="text-white hover:text-gray-300" href="#">Documentation</a>
+        <a class="text-white hover:text-gray-300" href="#">Invite</a>
+        <a class="text-white hover:text-gray-300" href="#">GitHub</a>
+    </nav>
+    <a class="text-white hover:text-gray-300" href="#">Sign In</a>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="text-center py-16">
+        <h1 class="text-4xl font-bold mb-4 text-white">Lakshya Study Discord Bot</h1>
+        <p class="text-lg text-gray-200 mb-8">Lakshya is a powerful and purpose-driven study bot built to support productivity and maintain discipline in a Discord study server. It equips both staff and students with essential tools such as moderation commands, support ticket management, and focused study features like exam countdowns, VC monitoring, and quick access to rules — all designed to help users stay on track toward their academic goals.</p>
+        <div class="space-x-4">
+            <a class="bg-blue-600 text-white px-6 py-3 rounded-md" href="#">Get started</a>
+            <a class="text-white border border-white px-6 py-3 rounded-md" href="#">Documentation</a>
+        </div>
+    </section>
+    <section class="py-16">
+        <h2 class="text-2xl font-bold mb-8 text-white">A better way to make Server Smooth.</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold text-black">Voice Channel Logging</h3>
+                </div>
+                <p class="text-black mb-4">Log when a user joins or leaves a voice channel, and see what roles they have been assigned or removed from.</p>
+                <a class="text-blue-600" href="#">Learn more →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold text-black">Exam Countdown</h3>
+                </div>
+                <p class="text-black mb-4">Set up countdowns for exams and other important events in a specialised selective vc. This can be updated in real time.</p>
+                <a class="text-blue-600" href="#">Learn more →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold text-black">VC Monitoring</h3>
+                </div>
+                <p class="text-black mb-4">Monitor voice channels for activity and manage them effectively.</p>
+                <a class="text-blue-600" href="#">Learn more →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold text-black">Moderation</h3>
+                </div>
+                <p class="text-black mb-4">Tools to help you moderate your server effectively.</p>
+                <a class="text-blue-600" href="#">Learn more →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold text-black">Setup Modlogs</h3>
+                </div>
+                <p class="text-black mb-4">Set up moderation logs to keep track of all actions taken by moderators.</p>
+                <a class="text-blue-600" href="#">Learn more →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold text-black">NSFW Detection</h3>
+                </div>
+                <p class="text-black mb-4">Automatically detect and manage NSFW content in your server.</p>
+                <a class="text-blue-600" href="#">Learn more →</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-600 text-white p-2 rounded-full">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold text-black">Tickets for Help</h3>
+                </div>
+                <p class="text-black mb-4">Create tickets for help in the Discord server to manage support requests efficiently.</p>
+                <a class="text-blue-600" href="#">Learn more →</a>
+            </div>
+    </div>
+    </section>
+    <section class="py-16">
+        <h2 class="text-2xl font-bold mb-8 text-white">Lakshya Study : Enhancing your Study time.</h2>
+        <p class="text-gray-200 mb-8">Meet Lakshya, your personal study assistant on Discord! Designed with discipline, support, and productivity in mind, Lakshya helps maintain a smooth and motivating study environment. Whether you’re looking to set exam countdowns, alert VC members, manage rule-breakers, or monitor camera activity, Lakshya has your back. With tools tailored for both students and staff, Lakshya ensures that your focus stays on what truly matters — achieving your academic goals with clarity and consistency.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <h3 class="text-4xl font-bold mb-4 text-black count" data-target="16448">0</h3>
+                <p class="text-black">Monitoring total servers</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <h3 class="text-4xl font-bold mb-4 text-black count" data-target="237000000">0</h3>
+                <p class="text-black">Monitoring total countdowns</p>
+            </div>
+            <div class="bg-blue-600 text-white p-6 rounded-lg shadow-md glassmorphism follow-mouse">
+                <h3 class="text-4xl font-bold mb-4 count" data-target="15800000">0</h3>
+                <p>Members across Discord</p>
+            </div>
+        </div>
+    </section>
+    <section class="text-center py-16">
+        <h2 class="text-2xl font-bold mb-4 text-white">Ready to dive in? Invite the bot today.</h2>
+        <div class="space-x-4">
+            <a class="bg-blue-600 text-white px-6 py-3 rounded-md" href="#">Get started</a>
+            <a class="text-blue-600 px-6 py-3 rounded-md" href="#">Learn more</a>
+        </div>
+    </section>
+</main>
+<footer class="text-center py-6">
+    <p class="text-gray-200">© 2023 jeffvsc. All rights reserved.</p>
+</footer>
+<script>
+    document.querySelectorAll('.follow-mouse').forEach(container => {
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            container.style.setProperty('--mouse-x', `${x}px`);
+            container.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    const counters = document.querySelectorAll('.count');
+    const speed = 400; // The lower the slower
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+
+            // Lower inc to slow and higher to slow
+            const inc = target / speed;
+
+            // Check if target is reached
+            if (count < target) {
+                // Add inc to count and output in counter
+                counter.innerText = Math.ceil(count + inc);
+                // Call function every ms
+                setTimeout(updateCount, 1);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCount();
+    });
+</script>
+</body>
+</html>
