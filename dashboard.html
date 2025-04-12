@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lakshya Bot Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, #8e2de2 0%, #000000 100%);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      height: 100vh;
+    }
+
+  
+    header {
+      background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+    }
+  
+    header .left {
+      display: flex;
+      align-items: center;
+    }
+  
+    header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+  
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #fff;
+    }
+  
+    #user-profile {
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    #user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  
+    #logout-btn {
+      padding: 6px 14px;
+      background-color: #e94e4e;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+  
+    .description {
+      max-width: 700px;
+      margin: 30px auto;
+      color: #ddd;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: center;
+    }
+  
+    .guild-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+  
+    .guild-card {
+      background: rgb(255, 255, 255);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+  
+    .guild-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+  
+    .guild-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+  
+    .guild-info {
+      flex-grow: 1;
+      text-align: left;
+      margin-left: 15px;
+    }
+  
+    .guild-info h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #000000;
+    }
+  
+    .permission-label {
+      font-size: 13px;
+      color: #7b7b7b;
+      margin-top: 4px;
+    }
+  
+    .guild-info a {
+      color: #52aeff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      #user-profile {
+        margin-top: 10px;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="https://i.ibb.co/cSyvTcY3/image.png" alt="Lakshya Logo">
+      <h2>Lakshya Bot Dashboard</h2>
+    </div>
+    <div id="user-profile">
+      <img id="user-avatar" src="" alt="User Avatar">
+      <span id="user-name"></span>
+      <button id="logout-btn" onclick="window.location.href='/logout'">Logout</button>
+    </div>
+  </header>
+
+  <div class="guild-list" id="guild-list"></div>
+
+  <script>
+    async function loadUser() {
+      const res = await fetch('/api/user');
+      if (res.status === 200) {
+        const user = await res.json();
+
+        const profile = document.getElementById('user-profile');
+        document.getElementById('user-avatar').src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+        document.getElementById('user-name').innerText = `${user.username}#${user.discriminator}`;
+        profile.style.display = 'flex';
+
+        loadGuilds();
+      }
+    }
+
+    function getPermissionLabel(guild) {
+      if (guild.owner) return 'Owner';
+      if ((guild.permissions & 0x8) === 0x8) return 'Admin';
+      return 'Member';
+    }
+
+    async function loadGuilds() {
+      const res = await fetch('/api/guilds');
+      const CLIENT_ID = '1280418733986156564';
+      const guilds = await res.json();
+      const list = document.getElementById('guild-list');
+      list.innerHTML = '';
+
+      if (guilds.length === 0) {
+        list.innerHTML = '<p>No eligible servers found.</p>';
+        return;
+      }
+
+      guilds.forEach(guild => {
+        const div = document.createElement('div');
+        div.className = 'guild-card';
+        const icon = guild.icon
+          ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`
+          : 'https://cdn-icons-png.flaticon.com/512/5968/5968756.png';
+
+        const permission = getPermissionLabel(guild);
+
+        const button = guild.bot_in_guild
+          ? `<a href="/dashboard/settings.html?guild_id=${guild.id}">Manage Server</a>`
+          : `<a href="https://discord.com/oauth2/authorize?client_id={{CLIENT_ID}}&scope=bot+applications.commands&permissions=8&guild_id=${guild.id}">Add Bot</a>`;
+
+        div.innerHTML = `
+          <img class="guild-icon" src="${icon}" />
+          <div class="guild-info">
+            <h3>${guild.name}</h3>
+            <div class="permission-label">${permission}</div>
+            ${button}
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    window.onload = loadUser;
+  </script>
+</body>
+</html>
