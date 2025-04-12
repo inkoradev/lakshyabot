@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshya Bot Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #000000 100%);
+            color: #0c0c0c;
+        }
+
+        .doc-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doc-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(99,102,241,0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .doc-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-icon {
+            background: #5865F2;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .sub-feature {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+        }
+
+        .command-example {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 0.5rem 0;
+            font-size: 0.9em;
+        }
+
+        h2 {
+            color: #2D3748;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: #4A5568;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="flex justify-between items-center p-6">
+        <div class="flex items-center">
+            <img alt="Logo" class="h-10 w-10" src="https://i.ibb.co/cSyvTcY3/image.png">
+            <h1 class="ml-4 text-white text-xl font-bold">Lakshya Bot Docs</h1>
+        </div>
+        <nav class="flex space-x-6">
+            <a class="text-white hover:text-gray-300" href="index.html">Home</a>
+            <a class="text-white hover:text-gray-300" href="#features">Features</a>
+            <a class="text-white hover:text-gray-300" href="#commands">Commands</a>
+            <a class="text-white hover:text-gray-300" href="#setup">Setup</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Features Section -->
+        <section id="features" class="doc-container">
+            <h2>📚 Comprehensive Feature Overview</h2>
+            
+            <!-- Voice Channel Logging -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-list text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Voice Channel Analytics</h3>
+                </div>
+                <p class="text-gray-700 mb-4">Advanced tracking system for voice channel activities with detailed reports.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-user-clock mr-2 text-blue-600"></i>
+                        <span>Real-time join/leave tracking with timestamps</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-users-slash mr-2 text-blue-600"></i>
+                        <span>Role change detection and history</span>
+                    </div>
+                    <div class="command-example">/logs voice channel=study-vc</div>
+                </div>
+            </div>
+
+            <!-- Exam Countdown -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Exam Scheduler</h3>
+                </div>
+                <p class="text-gray-700 mb-4">Automated exam reminders and study session planning.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-bell mr-2 text-blue-600"></i>
+                        <span>Customizable reminder intervals (1h, 24h, 1wk)</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-sync-alt mr-2 text-blue-600"></i>
+                        <span>Real-time updates via dedicated announcement channels</span>
+                    </div>
+                    <div class="command-example">/exam create name="Final Exams" date=2024-05-15</div>
+                </div>
+            </div>
+
+            <!-- VC Monitoring -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Voice Channel Management</h3>
+                </div>
+                <p class="text-gray-700 mb-4">Advanced voice channel monitoring and control system.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-microphone-slash mr-2 text-blue-600"></i>
+                        <span>Automatic mute for inactive users</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-door-open mr-2 text-blue-600"></i>
+                        <span>Customizable AFK timeout thresholds</span>
+                    </div>
+                    <div class="command-example">/vc monitor channel=study-room action=auto-mute</div>
+                </div>
+            </div>
+
+            <!-- Sticky Messages -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-note-sticky text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Smart Pinned Messages</h3>
+                </div>
+                <p class="text-gray-700 mb-4">Dynamic message management system with automatic updates.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-comment-medical mr-2 text-blue-600"></i>
+                        <span>Multi-channel synchronization</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-history mr-2 text-blue-600"></i>
+                        <span>Version control and edit history</span>
+                    </div>
+                    <div class="command-example">/sticky create channel=announcements message="Important Update!"</div>
+                </div>
+            </div>
+
+            <!-- Moderation -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-gavel text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Advanced Moderation</h3>
+                </div>
+                <p class="text-gray-700 mb-4">Comprehensive server management toolkit for moderators.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-user-lock mr-2 text-blue-600"></i>
+                        <span>Automated role management</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-comment-slash mr-2 text-blue-600"></i>
+                        <span>Smart spam detection system</span>
+                    </div>
+                    <div class="command-example">/warn @user reason="Inappropriate content"</div>
+                </div>
+            </div>
+
+            <!-- Setup Modlogs -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-book text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Moderation Archives</h3>
+                </div>
+                <p class="text-gray-700 mb-4">Comprehensive audit system for all moderation actions.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-database mr-2 text-blue-600"></i>
+                        <span>90-day action history storage</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-file-export mr-2 text-blue-600"></i>
+                        <span>CSV export capability</span>
+                    </div>
+                    <div class="command-example">/modlog setup channel=moderation-logs</div>
+                </div>
+            </div>
+
+            <!-- NSFW Detection -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Content Filtering</h3>
+                </div>
+                <p class="text-gray-700 mb-4">AI-powered content moderation system.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-image mr-2 text-blue-600"></i>
+                        <span>Image and text analysis</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-user-shield mr-2 text-blue-600"></i>
+                        <span>Custom sensitivity levels</span>
+                    </div>
+                    <div class="command-example">/nsfw filter level=strict</div>
+                </div>
+            </div>
+
+            <!-- Tickets for Help -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-ticket-alt text-white"></i>
+                    </div>
+                    <h3 class="ml-4 text-lg font-semibold">Support Ticket System</h3>
+                </div>
+                <p class="text-gray-700 mb-4">Efficient help request management with priority levels.</p>
+                <div class="space-y-3">
+                    <div class="sub-feature">
+                        <i class="fas fa-tags mr-2 text-blue-600"></i>
+                        <span>Customizable categories (Technical, Academic, General)</span>
+                    </div>
+                    <div class="sub-feature">
+                        <i class="fas fa-bell mr-2 text-blue-600"></i>
+                        <span>Staff notification system</span>
+                    </div>
+                    <div class="command-example">/ticket create category="Technical Support"</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section id="commands" class="doc-container">
+            <h2>🛠️ Complete Command List</h2>
+            
+            <div class="space-y-6">
+                <div class="command-category">
+                    <h3 class="text-xl font-semibold mb-3">🗣️ Voice Channel Commands</h3>
+                    <div class="command-example">/vc create name="Study Room" limit=10</div>
+                    <div class="command-example">/vc lock reason="Session Completed"</div>
+                    <div class="command-example">/vc stats user=@member</div>
+                </div>
+
+                <div class="command-category">
+                    <h3 class="text-xl font-semibold mb-3">📚 Study Management</h3>
+                    <div class="command-example">/study start subject="Mathematics" duration=60</div>
+                    <div class="command-example">/break reminder interval=30</div>
+                    <div class="command-example">/resource share link="https://example.com"</div>
+                </div>
+
+                <div class="command-category">
+                    <h3 class="text-xl font-semibold mb-3">🛡️ Advanced Moderation</h3>
+                    <div class="command-example">/mute @user duration=24h reason="Spamming"</div>
+                    <div class="command-example">/purge messages=50</div>
+                    <div class="command-example">/role add @user role=Student</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Guide -->
+        <section id="setup" class="doc-container">
+            <h2>⚙️ Configuration Guide</h2>
+            
+            <div class="space-y-4">
+                <div class="setup-step">
+                    <h3 class="text-lg font-semibold">1. Initial Configuration</h3>
+                    <p class="text-gray-700">Use <span class="command-example">/setup wizard</span> to configure basic settings through interactive menus.</p>
+                </div>
+
+                <div class="setup-step">
+                    <h3 class="text-lg font-semibold">2. Channel Setup</h3>
+                    <p class="text-gray-700">Designate specific channels using <span class="command-example">/config set announcements=#general</span></p>
+                </div>
+
+                <div class="setup-step">
+                    <h3 class="text-lg font-semibold">3. Permissions Management</h3>
+                    <p class="text-gray-700">Configure role-based access with <span class="command-example">/permission set role=Moderator command=ban</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 text-gray-300">
+        <p>© 2025 Sensation Lions. All rights reserved.</p>
+        <div class="mt-2 text-sm">
+            <a href="#" class="hover:text-white">Privacy Policy</a> | 
+            <a href="#" class="hover:text-white">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive mouse effects
+        document.querySelectorAll('.doc-container, .feature-card').forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                element.style.setProperty('--mouse-x', `${x}px`);
+                element.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
